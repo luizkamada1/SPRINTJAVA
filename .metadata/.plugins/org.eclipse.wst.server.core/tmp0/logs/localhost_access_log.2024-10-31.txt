@@ -1,0 +1,4 @@
+127.0.0.1 - - [31/Oct/2024:14:41:17 -0300] "GET / HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [31/Oct/2024:14:41:19 -0300] "GET /ProjetoFinal/WEB-INF/classes/br/com/fiap/dao/AgReparoDao.java HTTP/1.1" 404 694
+0:0:0:0:0:0:0:1 - - [31/Oct/2024:14:42:11 -0300] "GET /ProjetoFinal/ HTTP/1.1" 404 780
+0:0:0:0:0:0:0:1 - - [31/Oct/2024:14:42:21 -0300] "GET /ProjetoFinal/api/clientes HTTP/1.1" 200 129
