@@ -1,2 +1,0 @@
-INDEX VERSION 1.4+/Users/luizkamada/Documents/FIAP/1TDSPV/Challenge/Sprint_04/JAVASPRINT4 2/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-2052480524.index
