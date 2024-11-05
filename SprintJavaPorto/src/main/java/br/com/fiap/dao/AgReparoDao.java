@@ -18,7 +18,7 @@ public class AgReparoDao {
     }
 
     public void inserir(AgReparo agReparo) throws SQLException {
-        String sql = "INSERT INTO AG_REPARO (id_reparo, data_ag, hora_ag, cliente_cpf, centro_auto_id_centro) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO AGREPARO (id_reparo, data_ag, hora_ag, cliente_cpf, centro_auto_id_centro) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, agReparo.getIdReparo());
             stmt.setDate(2, new Date(agReparo.getDataAg().getTime())); // Convertendo java.util.Date para java.sql.Date
@@ -30,7 +30,7 @@ public class AgReparoDao {
     }
 
     public void atualizar(AgReparo agReparo) throws SQLException {
-        String sql = "UPDATE AG_REPARO SET data_ag=?, hora_ag=?, cliente_cpf=?, centro_auto_id_centro=? WHERE id_reparo=?";
+        String sql = "UPDATE AGREPARO SET data_ag=?, hora_ag=?, cliente_cpf=?, centro_auto_id_centro=? WHERE id_reparo=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setDate(1, new Date(agReparo.getDataAg().getTime())); // Convertendo java.util.Date para java.sql.Date
             stmt.setString(3,agReparo.getHoraAg()); 
@@ -42,7 +42,7 @@ public class AgReparoDao {
     }
 
     public void deletar(int idReparo) throws SQLException {
-        String sql = "DELETE FROM AG_REPARO WHERE id_reparo=?";
+        String sql = "DELETE FROM AGREPARO WHERE id_reparo=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idReparo);
             stmt.executeUpdate();
@@ -50,7 +50,7 @@ public class AgReparoDao {
     }
 
     public AgReparo buscarPorId(int idReparo) throws SQLException {
-        String sql = "SELECT * FROM AG_REPARO WHERE id_reparo=?";
+        String sql = "SELECT * FROM AGREPARO WHERE id_reparo=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idReparo);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -70,7 +70,7 @@ public class AgReparoDao {
 
     public List<AgReparo> listarTodos() throws SQLException {
         List<AgReparo> agReparos = new ArrayList<>();
-        String sql = "SELECT * FROM AG_REPARO";
+        String sql = "SELECT * FROM AGREPARO";
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -89,7 +89,7 @@ public class AgReparoDao {
     // Listar todos os reparos de um cliente específico (por CPF)
     public List<AgReparo> listarReparosPorCliente(int clienteCpf) throws SQLException {
         List<AgReparo> agReparos = new ArrayList<>();
-        String sql = "SELECT * FROM AG_REPARO WHERE cliente_cpf=?";
+        String sql = "SELECT * FROM AGREPARO WHERE cliente_cpf=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, clienteCpf);
             try (ResultSet rs = stmt.executeQuery()) {

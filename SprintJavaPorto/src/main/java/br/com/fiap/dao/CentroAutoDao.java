@@ -18,7 +18,7 @@ public class CentroAutoDao {
 
     // Método para inserir um centro automotivo
     public void inserir(CentroAuto centroAuto) throws SQLException {
-        String sql = "INSERT INTO CENTRO_AUTO (id_centro, nome, endereco, cep) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO CENTROAUTO (id_centro, nome, endereco, cep) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, centroAuto.getIdCentro());
             stmt.setString(2, centroAuto.getNome());
@@ -30,7 +30,7 @@ public class CentroAutoDao {
 
     // Método para atualizar um centro automotivo
     public void atualizar(CentroAuto centroAuto) throws SQLException {
-        String sql = "UPDATE CENTRO_AUTO SET nome=?, endereco=?, cep=? WHERE id_centro=?";
+        String sql = "UPDATE CENTROAUTO SET nome=?, endereco=?, cep=? WHERE id_centro=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, centroAuto.getNome());
             stmt.setString(2, centroAuto.getEndereco());
@@ -42,7 +42,7 @@ public class CentroAutoDao {
 
     // Método para deletar um centro automotivo pelo ID
     public void deletar(int idCentro) throws SQLException {
-        String sql = "DELETE FROM CENTRO_AUTO WHERE id_centro=?";
+        String sql = "DELETE FROM CENTROAUTO WHERE id_centro=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idCentro);
             stmt.executeUpdate();
@@ -51,7 +51,7 @@ public class CentroAutoDao {
 
     // Método para buscar um centro automotivo pelo ID
     public CentroAuto buscarPorId(int idCentro) throws SQLException {
-        String sql = "SELECT * FROM CENTRO_AUTO WHERE id_centro=?";
+        String sql = "SELECT * FROM CENTROAUTO WHERE id_centro=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idCentro);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -71,7 +71,7 @@ public class CentroAutoDao {
     // Método para listar todos os centros automotivos
     public List<CentroAuto> listarTodos() throws SQLException {
         List<CentroAuto> centrosAuto = new ArrayList<>();
-        String sql = "SELECT * FROM CENTRO_AUTO";
+        String sql = "SELECT * FROM CENTROAUTO";
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {

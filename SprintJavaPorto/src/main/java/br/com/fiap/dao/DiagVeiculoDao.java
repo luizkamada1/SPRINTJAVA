@@ -18,7 +18,7 @@ public class DiagVeiculoDao {
 
     // Método para inserir um diagnóstico de veículo
     public void inserir(DiagVeiculo diagVeiculo) throws SQLException {
-        String sql = "INSERT INTO DIAG_VEICULO (id_diag, nome, comp_bordo, codigo_falha, sintomas, veiculo_placa) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO DIAGVEICULO (id_diag, nome, comp_bordo, codigo_falha, sintomas, veiculo_placa) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, diagVeiculo.getIdDiag());
             stmt.setString(2, diagVeiculo.getNome());
@@ -32,7 +32,7 @@ public class DiagVeiculoDao {
 
     // Método para atualizar um diagnóstico de veículo
     public void atualizar(DiagVeiculo diagVeiculo) throws SQLException {
-        String sql = "UPDATE DIAG_VEICULO SET nome=?, comp_bordo=?, codigo_falha=?, sintomas=?, veiculo_placa=? WHERE id_diag=?";
+        String sql = "UPDATE DIAGVEICULO SET nome=?, comp_bordo=?, codigo_falha=?, sintomas=?, veiculo_placa=? WHERE id_diag=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, diagVeiculo.getNome());
             stmt.setString(2, diagVeiculo.getCompBordo());
@@ -46,7 +46,7 @@ public class DiagVeiculoDao {
 
     // Método para deletar um diagnóstico de veículo pelo ID
     public void deletar(int idDiag) throws SQLException {
-        String sql = "DELETE FROM DIAG_VEICULO WHERE id_diag=?";
+        String sql = "DELETE FROM DIAGVEICULO WHERE id_diag=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idDiag);
             stmt.executeUpdate();
@@ -55,7 +55,7 @@ public class DiagVeiculoDao {
 
     // Método para buscar um diagnóstico de veículo pelo ID
     public DiagVeiculo buscarPorId(int idDiag) throws SQLException {
-        String sql = "SELECT * FROM DIAG_VEICULO WHERE id_diag=?";
+        String sql = "SELECT * FROM DIAGVEICULO WHERE id_diag=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idDiag);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -77,7 +77,7 @@ public class DiagVeiculoDao {
     // Método para listar todos os diagnósticos de veículos
     public List<DiagVeiculo> listarTodos() throws SQLException {
         List<DiagVeiculo> diagVeiculos = new ArrayList<>();
-        String sql = "SELECT * FROM DIAG_VEICULO";
+        String sql = "SELECT * FROM DIAGVEICULO";
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {

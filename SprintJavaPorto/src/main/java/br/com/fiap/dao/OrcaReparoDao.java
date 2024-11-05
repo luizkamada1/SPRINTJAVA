@@ -18,7 +18,7 @@ public class OrcaReparoDao {
 
     // Método para inserir um orçamento de reparo
     public void inserir(OrcaReparo orcaReparo) throws SQLException {
-        String sql = "INSERT INTO ORCA_REPARO (id_orca, preco_estim, reparo_embr, reparo_rad, subs_correia, diag_veiculo_id_diagnostico) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO ORCAREPARO (id_orca, preco_estim, reparo_embr, reparo_rad, subs_correia, diag_veiculo_id_diagnostico) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, orcaReparo.getIdOrca());
             stmt.setDouble(2, orcaReparo.getPrecoEstim());
@@ -32,7 +32,7 @@ public class OrcaReparoDao {
 
     // Método para atualizar um orçamento de reparo
     public void atualizar(OrcaReparo orcaReparo) throws SQLException {
-        String sql = "UPDATE ORCA_REPARO SET preco_estim=?, reparo_embr=?, reparo_rad=?, subs_correia=?, diag_veiculo_id_diagnostico=? WHERE id_orca=?";
+        String sql = "UPDATE ORCAREPARO SET preco_estim=?, reparo_embr=?, reparo_rad=?, subs_correia=?, diag_veiculo_id_diagnostico=? WHERE id_orca=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setDouble(1, orcaReparo.getPrecoEstim());
             stmt.setString(2, orcaReparo.getReparoEmbr());
@@ -46,7 +46,7 @@ public class OrcaReparoDao {
 
     // Método para deletar um orçamento de reparo pelo ID
     public void deletar(int idOrca) throws SQLException {
-        String sql = "DELETE FROM ORCA_REPARO WHERE id_orca=?";
+        String sql = "DELETE FROM ORCAREPARO WHERE id_orca=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idOrca);
             stmt.executeUpdate();
@@ -55,7 +55,7 @@ public class OrcaReparoDao {
 
     // Método para buscar um orçamento de reparo pelo ID
     public OrcaReparo buscarPorId(int idOrca) throws SQLException {
-        String sql = "SELECT * FROM ORCA_REPARO WHERE id_orca=?";
+        String sql = "SELECT * FROM ORCAREPARO WHERE id_orca=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, idOrca);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -77,7 +77,7 @@ public class OrcaReparoDao {
     // Método para listar todos os orçamentos de reparos
     public List<OrcaReparo> listarTodos() throws SQLException {
         List<OrcaReparo> orcaReparos = new ArrayList<>();
-        String sql = "SELECT * FROM ORCA_REPARO";
+        String sql = "SELECT * FROM ORCAREPARO";
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
